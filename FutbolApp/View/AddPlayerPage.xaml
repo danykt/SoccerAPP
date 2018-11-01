@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FutbolApp.View.AddPlayerPage">
+        <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+            <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0"/>
+        </StackLayout>
+
+        <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand">
+
+
+            <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True"/>
+
+
+
+
+
+            <Label Text="FirstName: "
+                        TextColor="Blue" x:Name="Lbl_FirstName" />
+            <Entry Text="{Binding FirstName}">
+                
+            </Entry>
+
+            <Label Text="LastName: "
+                        TextColor="Blue" x:Name="Lbl_LastName"/>
+            <Entry Text="{Binding LastName}" >
+                
+            </Entry>
+
+            <Label Text="Team: "
+                        TextColor="Blue" x:Name="Lbl_Team" />
+            <Entry Text="{Binding Team}" >
+                
+            </Entry>
+           
+
+
+            <Button Text="Add Player" 
+                        Command="{Binding AddPlayerInfoOperation}" 
+                        IsEnabled="{Binding IsNotBusy}" 
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        BackgroundColor="#F2C500"
+                        BorderWidth="0"/>
+        </StackLayout>
+    
+    
+    
+
+</ContentPage>

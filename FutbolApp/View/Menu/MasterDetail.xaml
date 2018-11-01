@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace.FutbolApp.View.Menu;assembly=FutbolApp"
+                  xmlns:detailviews1="clr-namespace:FutbolApp.View"
+                  xmlns:local1="clr-namespace:FutbolApp.View.Menu"
+                  x:Class="FutbolApp.View.Menu.MasterDetail">
+
+    <MasterDetailPage.Master>
+        <local1:MasterPage x:Name="masterpage"/>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+                <x:Arguments>
+                    <detailviews1:RatePlayersPage/>
+                </x:Arguments>
+         </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

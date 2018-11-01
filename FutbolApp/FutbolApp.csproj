@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xamarin.Auth" Version="1.6.0.2" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Plugin" Version="0.1.7" />
+    <PackageReference Include="Microsoft.Azure.Devices.Client.PCL" Version="1.0.16" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.3.0" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client" Version="4.0.1" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client.SQLiteStore" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Model\Player.cs" />
+    <Compile Remove="Model\User.cs" />
+    <Compile Remove="Model\missallenious.cs" />
+    <Compile Remove="Modelo\tools..cs" />
+    <Compile Remove="View\MyPage.xaml.cs" />
+    <Compile Remove="Modelo\Player.cs" />
+    <Compile Remove="Modelo\CupOfCoffee.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modelo\" />
+    <Folder Include="View\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="Service\" />
+    <Folder Include="Athentication\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="View\MyPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\RatePlayersPage.xaml.cs">
+      <DependentUpon>RatePlayersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Menu\MasterDetail.xaml.cs">
+      <DependentUpon>MasterDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Menu\MasterPage.xaml.cs">
+      <DependentUpon>MasterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\AddPlayerPage.xaml.cs">
+      <DependentUpon>AddPlayerPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="App.xaml">
+      <LogicalName>App.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MainPage.xaml">
+      <LogicalName>MainPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\EditPlayersPage.xaml">
+      <LogicalName>EditPlayersPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\LoginPage.xaml">
+      <LogicalName>LoginPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\RatePlayersPage.xaml">
+      <LogicalName>RatePlayersPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\RegistrationPage.xaml">
+      <LogicalName>RegistrationPage.xaml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\TopTenPage.xaml">
+      <LogicalName>TopTenPage.xaml</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

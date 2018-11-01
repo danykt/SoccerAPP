@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="FutbolApp.View.RatePlayersPage"
+             Title="RatePlayersPage">
+    
+    <StackLayout VerticalOptions="Center">
+        
+    <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+        <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0"/>
+    </StackLayout>
+        
+        <Label x:Name="PlayerName" Text="Player Name"/>
+        <Picker x:Name="SpeedPicker" Title="Rate Speed"/>
+        <Picker x:Name="DribbingPicker" Title="Rate Dribbling"/>
+        <Picker x:Name="PassPicker" Title="Rate Pass"/>
+        <Picker x:Name="ShotPicker" Title="Rate Shot"/>
+        <Picker x:Name="DefensePicker" Title="Rate Defense"/>
+
+
+
+
+    </StackLayout>
+</ContentPage>
