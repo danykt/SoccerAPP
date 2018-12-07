@@ -14,11 +14,10 @@
         <Entry x:Name="Entry_User" Placeholder="Username"/>
         
         <Label x:Name="Label_Pass" Text="Password"/>
-        <Entry x:Name="Entry_Pass" Placeholder="Password"/>
+        <Entry x:Name="Entry_Pass" Placeholder="Password" IsPassword="true"/>
         
         <Button x:Name="Button_Signin" Text="Sign in" Clicked="Signin_Async"/>
          <Button x:Name="Button_Register" Text="Register" Clicked="Register_Async"/>
-        <Button x:Name="Button_AddPlayer" Text="Add player" Clicked="AddPlayer_Async"/>
 
     </StackLayout>
     

@@ -24,15 +24,28 @@ namespace FutbolApp.View.Menu
         void SetItems()
         {
             items = new List<MasterMenuItem>();
-            items.Add(new MasterMenuItem("Edit", "icon.png", typeof(EditPlayersPage)));
-            items.Add(new MasterMenuItem("Rate", "icon.png", typeof(RatePlayersPage)));
-            items.Add(new MasterMenuItem("Top 10", "icon.png", typeof(TopTenPage)));
-            items.Add(new MasterMenuItem("Manage", "icon.png", typeof(AddPlayerPage)));
+            items.Add(new MasterMenuItem("Top 10", "icon.png", typeof(EditPlayersPage)));
+            //items.Add(new MasterMenuItem("Rate", "icon.png", typeof(RatePlayersPage)));
+            items.Add(new MasterMenuItem("Pick Players", "icon.png", typeof(TopTenPage)));
 
 
 
             ListView.ItemsSource = items;
 
+        }
+
+        async void Logout_Procedure(object sender, EventArgs e)
+        {
+            if (Device.OS == TargetPlatform.Android)
+            {
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                // await Navigation.PushAsync(new RegistrationPage());
+
+            }
+            else if (Device.OS == TargetPlatform.iOS)
+            {
+                await Navigation.PushModalAsync(new LoginPage());
+            }
         }
     }
 }

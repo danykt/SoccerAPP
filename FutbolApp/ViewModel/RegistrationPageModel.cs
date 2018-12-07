@@ -14,19 +14,7 @@ namespace FutbolApp.ViewModel
     {
         AzureService azureService;
 
-        private USUARIO _selectedUser { get; set; }
-        public USUARIO SelectedUser
-        {
-            get { return _selectedUser; }
-            set
-            {
-                if(_selectedUser != value)
-                {
-                    _selectedUser = value;
-                }
-            }
-
-        }
+     
 
 
         public RegistrationPageModel()
@@ -76,48 +64,17 @@ namespace FutbolApp.ViewModel
             set => SetProperty(ref confirmpassword, value);
         }
 
-        string email;
-        public string Email
+      
+        string fullName;
+        public string FullName
         {
-            get => email;
-            set => SetProperty(ref email, value);
+            get => fullName;
+            set => SetProperty(ref fullName, value);
         }
 
-        ICommand loadUsersCommand;
-        public ICommand LoadUsersCommand =>
-            loadUsersCommand ?? (loadUsersCommand = new Command(async () => await ExecuteLoadUsersCommandAsync()));
-
-        async Task ExecuteLoadUsersCommandAsync()
-        {
-            if (IsBusy || !(await LoginAsync()))
-                return;
 
 
-            try
-            {
-                LoadingMessage = "Loading Users...";
-                IsBusy = true;
-                var users = await azureService.GetUsers();
-                Users.ReplaceRange(users);
 
-
-                SortUsers();
-
-
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("OH NO!" + ex);
-
-                await Application.Current.MainPage.DisplayAlert("Sync Error", "Unable to sync users, you may be offline", "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-
-
-        }
 
         void SortUsers()
         {
@@ -131,11 +88,11 @@ namespace FutbolApp.ViewModel
             UsersGrouped.ReplaceRange(groups);
         }
 
-        ICommand addUserCommand;
-        public ICommand AddUserCommand =>
-            addUserCommand ?? (addUserCommand = new Command(async () => await ExecuteAddUserCommandAsync()));
+        ICommand registerUserOperation;
+        public ICommand RegisterUserOperation =>
+        registerUserOperation ?? (registerUserOperation = new Command(async () => await RegisterUserOperationAsync()));
 
-        async Task ExecuteAddUserCommandAsync()
+        async Task RegisterUserOperationAsync()
         {
             //if (IsBusy || !(await LoginAsync()))
             //return;
@@ -144,7 +101,7 @@ namespace FutbolApp.ViewModel
 
                 if (string.IsNullOrWhiteSpace(Username) && string.IsNullOrWhiteSpace(Password))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Needs Name", "Please enter username and password.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Needs Username or Password", "Please enter username and password.", "OK");
                     return;
                 }
                 else if (Password != ConfirmPassword)
@@ -153,25 +110,32 @@ namespace FutbolApp.ViewModel
                     return;
 
                 }
-                else if (string.IsNullOrEmpty(Email))
+                else if (string.IsNullOrEmpty(FullName))
                 {
-                    await Application.Current.MainPage.DisplayAlert("Passwords dont match", "An Email is required in order to sign up", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Full Name required", "Full Name is required in order to sign up", "OK");
                     return;
 
                 }
 
-                // await Application.Current.MainPage.DisplayAlert("Needs Name", "This is after checking input", "OK");
 
-                LoadingMessage = "Adding User...";
+
+                LoadingMessage = "Registering User...";
                 IsBusy = true;
 
 
-                var user = await azureService.AddUser(Username, Password, "Cesar Labastida", "Developer", Email);
+                var user = await azureService.AddUser(Username, FullName, Password);
+
+                if(user != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Success", "Congratulations you have successfully signed up", "OK");
+                    return;
+                }
 
 
                 Username = string.Empty;
                 Password = string.Empty;
                 ConfirmPassword = string.Empty;
+                FullName = string.Empty;
                 Borrado = false;
                 // Customers.Add(customer);
                 Users.Add(user);
@@ -189,43 +153,7 @@ namespace FutbolApp.ViewModel
 
         }
 
-        ICommand removeUserCommand;
-        public ICommand RemoveUserCommand =>
-            removeUserCommand ?? (removeUserCommand = new Command(async () => await ExecuteRemoveUserCommandAsync()));
-
-        async Task ExecuteRemoveUserCommandAsync()
-        {
-            if (IsBusy || !(await LoginAsync()))
-                return;
-
-            try
-            {
-
-                if (SelectedUser == null)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Select User", "Please select a user.", "OK");
-                    return;
-                }
-                LoadingMessage = "Removing Customer...";
-                IsBusy = true;
-
-                var user = await azureService.RemoveUser(SelectedUser);
-
-                Users.Remove(user);
-                SortUsers();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("OH NO!" + ex);
-            }
-            finally
-            {
-                LoadingMessage = string.Empty;
-                IsBusy = false;
-            }
-
-        }
-
+  
 
         public Task<bool> LoginAsync()
         {

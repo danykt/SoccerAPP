@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FutbolApp.View.TopTenPage"
-             Title="My top 10">
+             Title="All players in Database">
     
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid AbsoluteLayout.LayoutFlags="All" 
@@ -14,7 +14,24 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
+            
+           <StackLayout Orientation="Horizontal" Padding="8" Spacing="16" BackgroundColor="Blue">
+      
+    
+                <Button Text="Add to Top 10 list" 
+                        Command="{Binding AddRatingOperation}" 
+                        IsEnabled="{Binding IsNotBusy}" 
+                        VerticalOptions="Center"
+                        TextColor="White"
+                        BackgroundColor="Green"
+                        BorderWidth="0"/>
+                
+               
+            </StackLayout>
+            
+            
+            
+            
            
             <ListView 
                 Grid.Row="2"
@@ -22,6 +39,7 @@
                 IsGroupingEnabled="true"
                 HasUnevenRows ="true"
                 ItemsSource="{Binding playersGrouped}"
+                SelectedItem="{Binding SelectedPlayer}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 RefreshCommand="{Binding FetchPlayersOperation}"

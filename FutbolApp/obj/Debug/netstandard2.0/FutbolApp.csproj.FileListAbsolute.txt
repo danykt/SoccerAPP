@@ -1,6 +1,8 @@
 /Users/dany/Desktop/FutbolApp/FutbolApp/bin/Debug/netstandard2.0/FutbolApp.deps.json
 /Users/dany/Desktop/FutbolApp/FutbolApp/bin/Debug/netstandard2.0/FutbolApp.dll
 /Users/dany/Desktop/FutbolApp/FutbolApp/bin/Debug/netstandard2.0/FutbolApp.pdb
+/Users/dany/Desktop/FutbolApp/FutbolApp/bin/Debug/netstandard2.0/Mono.Android.dll
+/Users/dany/Desktop/FutbolApp/FutbolApp/bin/Debug/netstandard2.0/Mono.Android.pdb
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/App.xaml.g.cs
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/MainPage.xaml.g.cs
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/View/AddPlayerPage.xaml.g.cs
@@ -15,6 +17,7 @@
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.AssemblyInfoInputs.cache
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.AssemblyInfo.cs
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.csproj.CopyComplete
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.dll
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.pdb
 /Users/dany/Desktop/FutbolApp/FutbolApp/obj/Debug/netstandard2.0/FutbolApp.csprojAssemblyReference.cache

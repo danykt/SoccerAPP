@@ -42,6 +42,7 @@ namespace FutbolApp.Modelo
 
         public string Team { get; set; }
 
+
         /// <summary>
         /// Gets or sets the OS of the user
         /// </summary>

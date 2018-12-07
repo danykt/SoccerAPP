@@ -8,6 +8,8 @@ namespace FutbolApp
 {
     public partial class App : Application
     {
+
+        public static string Name { get; internal set; }
         public App()
         {
             InitializeComponent();

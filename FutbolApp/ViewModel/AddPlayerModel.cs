@@ -9,14 +9,27 @@ using System.Linq;
 using FutbolApp.Helpers;
 
 
+/* AddPlayerModel @Cesar Labastida
+AddplayerModel class handles backend functionality for Addplayer.xml page
+This class is binded to codebehind class Addplayer.cs. The labels of the pages
+are set here in order to change the state of the page once players are queried.
+
+
+ */
+
+
 namespace FutbolApp.ViewModel
 {
     public class AddPlayerModel : BaseViewModel
     {
+
+        /* Labels to display state of the page loading and input labels to 
+        add new players into the database*/
+
         AzureService azureService;
         public AddPlayerModel()
         {
-            azureService = DependencyService.Get<AzureService>();
+            azureService = DependencyService.Get<AzureService>(); // initialize azure service conection
         }
 
         string loadingLabel;
@@ -51,6 +64,9 @@ namespace FutbolApp.ViewModel
 
         }
 
+
+        /* add player command validates input from the addplayers page once validated the azure service 
+        page adds this new player locally and to azure service db */
 
         ICommand addPlayerInfoOperation;
         public ICommand AddPlayerInfoOperation =>

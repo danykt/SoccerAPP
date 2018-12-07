@@ -13,7 +13,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
                 <x:Arguments>
-                    <detailviews1:RatePlayersPage/>
+                    <detailviews1:EditPlayersPage/>
                 </x:Arguments>
          </NavigationPage>
     </MasterDetailPage.Detail>

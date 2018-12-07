@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="FutbolApp.View.RegistrationPage">
-       <StackLayout x:Name="MasterLayout">
         <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
             <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0"/>
         </StackLayout>
@@ -26,6 +25,20 @@
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
+            
+             <Label Text="Full Name: "
+                        TextColor="Blue" x:Name="Lbl_fname"/>
+            <Entry Text="{Binding FullName}" HorizontalOptions="FillAndExpand">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                             Binding="{Binding Borrado}"
+                             Value="true">
+                        <Setter Property="IsEnabled" Value="false"/>
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            
+            
 
             <Label Text="Password: "
                         TextColor="Blue" x:Name="Lbl_Password"/>
@@ -38,7 +51,7 @@
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
-
+           
             <Label Text="Confirm Password: "
                         TextColor="Blue" x:Name="Lbl_ConfirmPassword" />
             <Entry Text="{Binding ConfirmPassword}" HorizontalOptions="FillAndExpand" IsPassword="True">
@@ -50,28 +63,22 @@
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
-            <Label Text="Email: "
-                        TextColor="Blue" x:Name="Lbl_email" />
-            <Entry Text="{Binding Email}" HorizontalOptions="FillAndExpand" IsPassword="True">
-                <Entry.Triggers>
-                    <DataTrigger TargetType="Entry"
-                             Binding="{Binding Borrado}"
-                             Value="true">
-                        <Setter Property="IsEnabled" Value="false"/>
-                    </DataTrigger>
-                </Entry.Triggers>
-            </Entry>
+       
 
 
 
             <Button Text="Signup" 
-                        Command="{Binding AddUserCommand}" 
+                        Command="{Binding RegisterUserOperation}" 
                         IsEnabled="{Binding IsNotBusy}" 
                         VerticalOptions="Center"
                         TextColor="White"
                         BackgroundColor="#F2C500"
                         BorderWidth="0"/>
+        
+        
+           <Button x:Name="Button_Back" Text="Back" Clicked="OnPreviousPageButtonClicked"/>
+
         </StackLayout>
-    </StackLayout>
+    
 
 </ContentPage>

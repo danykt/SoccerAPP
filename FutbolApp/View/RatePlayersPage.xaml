@@ -10,15 +10,19 @@
         <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0"/>
     </StackLayout>
         
+        
+         <Label x:Name="PlayerGeneralRating" XAlign="Center" FontSize="Large" Font="Bold,40" Text="0.0"/>
+
         <Label x:Name="PlayerName" Text="Player Name"/>
-        <Picker x:Name="SpeedPicker" Title="Rate Speed"/>
-        <Picker x:Name="DribbingPicker" Title="Rate Dribbling"/>
-        <Picker x:Name="PassPicker" Title="Rate Pass"/>
-        <Picker x:Name="ShotPicker" Title="Rate Shot"/>
-        <Picker x:Name="DefensePicker" Title="Rate Defense"/>
+        <Picker x:Name="SpeedPicker" Title="Rate Speed" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+        <Picker x:Name="DribbingPicker" Title="Rate Dribbling" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+        <Picker x:Name="PassPicker" Title="Rate Pass" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+        <Picker x:Name="ShotPicker" Title="Rate Shot" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
+        <Picker x:Name="DefensePicker" Title="Rate Defense" SelectedIndexChanged="Handle_SelectedIndexChanged"/>
 
+        <Button x:Name="Button_SaveChanges" Text="Save Changes" Clicked="UpdatePlayerAsyncProcedure"/>
+        <Button x:Name="Button_Back" Text="Back" Clicked="OnPreviousPageButtonClicked"/>
 
-
-
+        
     </StackLayout>
 </ContentPage>

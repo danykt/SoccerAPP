@@ -8,12 +8,8 @@ namespace FutbolApp.Modelo
 
         public string Username { get; set; }
         public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
         public bool deleted { get; set; }
-        public string OS { get; set; }
-        public string customerId { get; set; }
-        public string Email { get; set; }
 
         public DateTime DateUtc { get; set; }
 
@@ -24,7 +20,7 @@ namespace FutbolApp.Modelo
         public string TimeLabel { get { return DateUtc.ToLocalTime().ToString("t"); }}
 
         [Newtonsoft.Json.JsonIgnore]
-        public string NameLabel { get { return deleted ? "deleted" : FirstName + LastName; } }
+        public string NameLabel { get { return deleted ? "deleted" : FullName; } }
 
         [Microsoft.WindowsAzure.MobileServices.Version]
         public string AzureVersion { get; set; }

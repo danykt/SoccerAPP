@@ -29,7 +29,8 @@
                 </ListView>
             </StackLayout>
             <StackLayout x:Name="BottomStack" VerticalOptions="FillAndExpand">
-                <Button Text="Logout"/>
+                <Button x:Name="Button_SignOut" Text="Logout" Clicked="Logout_Procedure"/>
+
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

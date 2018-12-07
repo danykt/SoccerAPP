@@ -22,6 +22,8 @@ namespace FutbolApp
         public MobileServiceClient Client { get; set; } = null;
         IMobileServiceSyncTable<USUARIO> userTable;
         IMobileServiceSyncTable<PlayerInfo> playerInfoTable;
+        IMobileServiceSyncTable<RATING> ratingsTable;
+
 
 #if AUTH
         public static bool UseAuth { get; set; } = true;
@@ -61,6 +63,7 @@ namespace FutbolApp
             //Define table
             store.DefineTable<USUARIO>();
             store.DefineTable<PlayerInfo>();
+            store.DefineTable<RATING>();
 
 
             //Initialize SyncContext
@@ -69,6 +72,7 @@ namespace FutbolApp
             //Get our sync table that will call out to azure
             userTable = Client.GetSyncTable<USUARIO>();
             playerInfoTable = Client.GetSyncTable<PlayerInfo>();
+            ratingsTable = Client.GetSyncTable<RATING>();
 
 
         }
@@ -109,7 +113,7 @@ namespace FutbolApp
                 if (!CrossConnectivity.Current.IsConnected)
                     return;
 
-                await playerInfoTable.PullAsync("allPlayers", userTable.CreateQuery());
+                await playerInfoTable.PullAsync("allPlayers", playerInfoTable.CreateQuery());
 
                 await Client.SyncContext.PushAsync();
             }
@@ -121,6 +125,31 @@ namespace FutbolApp
 
 
 
+        public async Task SyncRatings()
+        {
+            try
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                    return;
+
+                await ratingsTable.PullAsync("allRatings", ratingsTable.CreateQuery());
+
+                await Client.SyncContext.PushAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Unable to sync users, that is alright as we have offline capabilities: " + ex);
+            }
+        }
+        public async Task<IEnumerable<RATING>> GetRatings()
+        {
+            await Initialize();
+            await SyncRatings();
+
+            return await ratingsTable.OrderBy(c => c.DateUtc).ToEnumerableAsync(); ;
+
+        }
+
         public async Task<IEnumerable<USUARIO>> GetUsers()
         {
             await Initialize();
@@ -130,18 +159,15 @@ namespace FutbolApp
         }
 
 
-        public async Task<USUARIO> AddUser(string username, string fname, string lname, string password, string email)
+        public async Task<USUARIO> AddUser(string username, string fullname, string password)
         {
             await Initialize();
             var user = new USUARIO
             {
                 DateUtc = DateTime.UtcNow,
-                OS = Device.RuntimePlatform,
-                FirstName = fname,
-                LastName = lname,
+                FullName = fullname,
                 Username = username,
-                Password = password,
-                Email = email
+                Password = password
             };
 
             await userTable.InsertAsync(user);
@@ -172,13 +198,58 @@ namespace FutbolApp
             return playerinfo;
         }
 
-      
+        public async Task<RATING> AddRating(string userId,string playerId, string shot, string pass, string dribb, string defence, string speed)
+        {
+            await Initialize();
+
+           
+
+            var rating = new RATING
+            {
+                UserID = userId,
+                PlayerInfoID = playerId,
+                Shot = shot,
+                Pass = pass,
+                Dribbling = dribb,
+                Defense = defence,
+                Speed = speed,
+                DateUtc = DateTime.UtcNow
+            };
+
+
+            await ratingsTable.InsertAsync(rating);
+
+            await SyncRatings();
+            //return coffee
+            return rating;
+        }
+
+
 
         public async Task<USUARIO> RemoveUser(USUARIO selected)
         {
             await Initialize();
             await userTable.DeleteAsync(selected);
+            
             await SyncUsers();
+            return selected;
+        }
+
+        public async Task<RATING> UpadteRating(RATING selected)
+        {
+            await Initialize();
+            await ratingsTable.UpdateAsync(selected);
+
+            await SyncRatings();
+            return selected;
+        }
+
+
+        public async Task<PlayerInfo> RemovePlayer(PlayerInfo selected)
+        {
+            await Initialize();
+            await playerInfoTable.DeleteAsync(selected);
+            await SyncPlayerInfo();
             return selected;
         }
 
