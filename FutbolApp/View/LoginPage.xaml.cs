@@ -22,6 +22,7 @@ namespace FutbolApp.View
         {
             azureService = DependencyService.Get<AzureService>();
 
+
             BackgroundColor = Tools.BackgroundColor;
             Label_Pass.TextColor = Tools.TextColor;
             Label_User.TextColor = Tools.TextColor;

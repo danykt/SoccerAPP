@@ -14,6 +14,11 @@ AddplayerModel class handles backend functionality for Addplayer.xml page
 This class is binded to codebehind class Addplayer.cs. The labels of the pages
 are set here in order to change the state of the page once players are queried.
 
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * The modification will be commented in each function of this class 
+ * ALl labels and get functions are modified from coffee cups project to query information from
+ * Futbol app database. All the structure follows coffee cups azure page
 
  */
 

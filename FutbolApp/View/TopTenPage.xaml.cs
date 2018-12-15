@@ -7,6 +7,13 @@ using FutbolApp.Helpers;
 
 using FutbolApp.ViewModel;
 
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * The modification will be commented in each function of this class 
+ * ALl sync and get functions are modified from coffee cups project to query information from
+ * Futbol app database. All the structure follows coffee cups azure page.*/
+
+
 namespace FutbolApp.View
 {
     public partial class TopTenPage : ContentPage

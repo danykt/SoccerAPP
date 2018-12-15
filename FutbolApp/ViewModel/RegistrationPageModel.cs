@@ -8,6 +8,12 @@ using Xamarin.Forms;
 using System.Linq;
 using FutbolApp.Helpers;
 
+
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * The modification will be commented in each function of this class 
+ * Futbol app database. All the structure follows coffee cups azure page.*/
+
 namespace FutbolApp.ViewModel
 {
     public class RegistrationPageModel : BaseViewModel

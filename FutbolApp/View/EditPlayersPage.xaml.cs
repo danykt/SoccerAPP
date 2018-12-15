@@ -5,6 +5,10 @@ using FutbolApp.ViewModel;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * Futbol app database. All the structure follows coffee cups azure page.*/
+
 namespace FutbolApp.View
 {
     public partial class EditPlayersPage : ContentPage
@@ -14,7 +18,7 @@ namespace FutbolApp.View
         public EditPlayersPage()
         {
             InitializeComponent();
-            BindingContext = vm = new EditPlayersModel(Navigation);
+            BindingContext = vm = new EditPlayersModel(Navigation); // modified
             
         }
 

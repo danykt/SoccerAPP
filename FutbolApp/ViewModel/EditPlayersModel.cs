@@ -14,7 +14,13 @@ using FutbolApp.View;
 /* Edit players page renders all players chosen from the database by the user first we query
  all players then we relate which players are used by using our stored account userID which is 
  set during login. The ratings are also related to each players info in order to display everything
- in the ratePlayer page */
+ in the ratePlayer page 
+ 
+ /* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * The modification will be commented in each function of this class 
+ * ALl sync and get functions are modified from coffee cups project to query information from
+ * Futbol app database. All the structure follows coffee cups azure page.*/
 
 
 namespace FutbolApp.ViewModel

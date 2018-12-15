@@ -13,18 +13,30 @@ using System.IO;
 using Plugin.Connectivity;
 using FutbolApp.Modelo;
 
+
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * The modification will be commented in each function of this class 
+ * ALl sync and get functions are modified from coffee cups project to query information from
+ * Futbol app database. All the structure follows coffee cups azure page.*/
+
+
 [assembly: Dependency(typeof(AzureService))]
 namespace FutbolApp
 {
     public class AzureService
     {
 
+
+        // originally set to initialize coffe cup class modified to USUARIO PlayerInfo and Rating classes
         public MobileServiceClient Client { get; set; } = null;
         IMobileServiceSyncTable<USUARIO> userTable;
         IMobileServiceSyncTable<PlayerInfo> playerInfoTable;
         IMobileServiceSyncTable<RATING> ratingsTable;
 
 
+
+        // original author James montemagno
 #if AUTH
         public static bool UseAuth { get; set; } = true;
 #else
@@ -37,7 +49,7 @@ namespace FutbolApp
                 return;
 
 
-            var appUrl = "https://edfrydelivery.azurewebsites.net";
+            var appUrl = "https://YOURAZUREPAGE.net";
 
 #if AUTH
             Client = new MobileServiceClient(appUrl, new AuthHandler());
@@ -60,16 +72,17 @@ namespace FutbolApp
             //setup our local sqlite store and intialize our table
             var store = new MobileServiceSQLiteStore(path);
 
-            //Define table
+            //Modification to classes for Futbol APP
             store.DefineTable<USUARIO>();
             store.DefineTable<PlayerInfo>();
             store.DefineTable<RATING>();
 
 
-            //Initialize SyncContext
+            //Initialize SyncContext original author James Montemagno
             await Client.SyncContext.InitializeAsync(store);
 
             //Get our sync table that will call out to azure
+            //Modification: From Coffe Cups class 
             userTable = Client.GetSyncTable<USUARIO>();
             playerInfoTable = Client.GetSyncTable<PlayerInfo>();
             ratingsTable = Client.GetSyncTable<RATING>();

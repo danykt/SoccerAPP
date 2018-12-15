@@ -5,6 +5,11 @@ using FutbolApp.ViewModel;
 using Plugin.Connectivity;
 using Xamarin.Forms;
 
+
+
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+*/
 namespace FutbolApp.View
 {
     public partial class RegistrationPage : ContentPage

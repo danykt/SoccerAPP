@@ -4,6 +4,13 @@ using System.Diagnostics;
 using FutbolApp.Modelo;
 using Xamarin.Forms;
 
+
+
+/* Original author James Montemagno Coffe Cups License: MIT 
+ * This class was modify from Coffee Cups project https://github.com/jamesmontemagno/app-coffeecups
+ * All the structure follows coffee cups azure page.*/
+
+
 namespace FutbolApp.View
 {
     public partial class RatePlayersPage : ContentPage
