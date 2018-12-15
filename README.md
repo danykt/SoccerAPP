@@ -29,7 +29,7 @@ A soccer application that allows you to make your top 10 list.
 
 * **Cesar Labastida** - *SoccerApp* - [SoccerApp](https://github.com/danykt/SoccerAPP)
 
-* **** - *Google Maps* - [jamesmontemagno](https://github.com/jamesmontemagno/app-coffeecups)
+* **James Montemagno** - *Coffee Cups* - [jamesmontemagno](https://github.com/jamesmontemagno/app-coffeecups)
 
 ## License
 
