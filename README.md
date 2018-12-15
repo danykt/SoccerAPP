@@ -29,8 +29,14 @@ A soccer application that allows you to make your top 10 list.
 
 * **Cesar Labastida** - *SoccerApp* - [SoccerApp](https://github.com/danykt/SoccerAPP)
 
+* **** - *Google Maps* - [jamesmontemagno](https://github.com/jamesmontemagno/app-coffeecups)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Thanks to jamesmontemagno
 
 
